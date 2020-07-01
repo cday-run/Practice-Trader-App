@@ -1,0 +1,3 @@
+Practice Stock Trader App
+-------------------------
+This repo is for a practice stock trader that allows users to create an account from which they can buy stocks and manage a portfolio.  It utilizes IEX's API to retrieve current stock prices.  It is built on a Flask framework.
