@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Get Quote
+{% endblock %}
+
+{% block main %}
+    <!--Create stock symbol input form-->
+    <form action="/quote" method="post">
+    <div class="form-group">
+        <input id="input" autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Ex: NFLX" type="text">
+    </div>
+    <button id="submit" class="btn btn-primary bg-info" type="submit">Search</button>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My Portfolio
+{% endblock %}
+
+{% block main %}
+    <!--create table-->
+    <table id="indextable" class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Stock</th>
+                <th scope="col">Number of Shares</th>
+                <th scope="col">Price of Share</th>
+                <th scope="col">Total Value</th>
+            </tr>
+        </thead>
+        <tbody class="table-secondary" onload="finishTable();">
+            <!--create a row for each stock owned-->
+            {% for i in stocks %}
+                <tr>
+                    <td>{{ i.symbol }}</td>
+                    <td>{{ i.shares }}</td>
+                    <td>{{ values[i.symbol]["price"] | usd }}</td>
+                    <td>{{ (values[i.symbol]["price"] * i.shares) | usd }}</td>
+                </tr>
+            {% endfor %}
+            <!--Display current cash balance-->
+            <tr>
+                <td>Cash</td>
+                <td></td>
+                <td></td>
+                <td>{{ cash | usd }}</td>
+            </tr>
+            <!--Display total portfolio value-->
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ total | usd }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

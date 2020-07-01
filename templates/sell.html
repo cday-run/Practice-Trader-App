@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell Stocks
+{% endblock %}
+
+{% block main %}
+    <form id="sellform" action="/sell" method="post">
+        <div class="form-group">
+            <input id="input" autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Ex: NFLX" type="text">
+        </div>
+        <div class="form-group">
+            <input id="count" autocomplete="off" autofocus class="form-control" name="shares" placeholder="Amt. Shares" type="number" min="0">
+        </div>
+        <div class="form-group">
+            <button id="submit" class="btn btn-primary bg-info" type="submit" disabled>Submit Sell Order</button>
+        </div>
+    </form>
+    <!--Validate form fields not blank-->
+    <script>
+        document.querySelector('#sellform').onkeyup = function () {
+            if (document.querySelector('#input').value !== '' && document.querySelector('#count').value !== ''){
+                document.querySelector('#submit').disabled = false;
+            } else {
+                document.querySelector('#submit').disabled = true;
+            }
+            };
+    </script>
+{% endblock %}

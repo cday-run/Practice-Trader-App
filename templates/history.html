@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transaction History
+{% endblock %}
+
+{% block main %}
+    <!--create table-->
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Bought/Sold</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Number of Shares</th>
+                <th scope="col">Price</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody class="table-secondary">
+            <!--create a row for each stock owned-->
+            {% for item in history %}
+                <tr>
+                    <td>{{ item.buy_sell }}</td>
+                    <td>{{ item.symbol }}</td>
+                    <td>{{ item.shares }}</td>
+                    <td>{{ (item.share_price * item.shares) | usd }}</td>
+                    <td>{{ item.date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

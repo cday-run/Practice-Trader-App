@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Deposit Cash
+{% endblock %}
+
+{% block main %}
+    <form action="/deposit" method="post">
+        <div class="form-group">
+            <input id="input" autocomplete="off" autofocus class="form-control" name="deposit" placeholder="$0.00" type="numeric" min="0">
+        </div>
+        <div>
+            <button id="submit" class="btn btn-primary bg-info" type="submit" disabled>Submit Deposit</button>
+        </div>
+    </form>
+    <script>
+        document.querySelector('#input').onkeyup = function () {
+            if (document.querySelector('#input').value === '') {
+                document.querySelector('#submit').disabled = true;
+            }
+            if (isNaN(document.querySelector('#input').value)) {
+                document.querySelector('#submit').disabled = false;
+            }
+            if (document.querySelector('#input').value <= 0){
+                document.querySelector('#submit').disabled = true;
+            }
+            else{
+                document.querySelector('#submit').disabled = false;
+            }
+        };
+    </script>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted Value
+{% endblock %}
+
+{% block main %}
+    <!--Table to show lookup() output-->
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="column">Company</th>
+                <th scope="column">Symbol</th>
+                <th scope="column">Value</th>
+            </tr>
+        </thead>
+        <tbody class="table-secondary">
+            <tr>
+                <td>{{stock.name}}</td>
+                <td>{{stock.symbol}}</td>
+                <td>{{stock.price | usd}}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
